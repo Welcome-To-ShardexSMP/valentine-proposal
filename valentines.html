@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Mr. Chetanya ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    min-height:100vh;
+    color:white;
+    text-align:center;
+    padding:20px;
+    overflow-x:hidden;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+}
+
+h1{
+    font-family:'Great Vibes',cursive;
+    font-size:50px;
+    margin-top:20px;
+}
+
+.message{
+    margin:20px 0;
+    font-size:16px;
+    line-height:1.6;
+    padding:0 10px;
+}
+
+.media-wrapper{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+}
+
+img{
+    width:100%;
+    max-width:260px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+video{
+    width:100%;
+    max-width:280px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+h2{
+    margin-top:20px;
+    font-size:20px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:50px;
+    font-size:16px;
+    cursor:pointer;
+    margin:10px;
+    transition:0.3s;
+}
+
+#yes{
+    background:white;
+    color:#ff4b5c;
+}
+
+#no{
+    background:#ff4b5c;
+    color:white;
+}
+
+.final{
+    display:none;
+    font-family:'Great Vibes',cursive;
+    font-size:38px;
+    margin-top:25px;
+}
+
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+    top:0;
+    left:0;
+}
+
+.heart{
+    position:absolute;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    from{transform:translateY(100vh);}
+    to{transform:translateY(-10vh);}
+}
+
+/* Extra Responsive */
+@media (max-width:480px){
+    h1{font-size:40px;}
+    .message{font-size:14px;}
+    .final{font-size:30px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="container">
+
+<h1>My Mr. Chetanya ❤️</h1>
+
+<p class="message">
+Some people come into life like a coincidence…  
+but you came into mine like destiny.  
+With every conversation, every smile, every little moment —  
+you became my comfort, my peace, my favorite notification.  
+
+You don’t even realize how much light you bring into my world.  
+And today, I just want to ask the most important question…
+</p>
+
+<div class="media-wrapper">
+    <img src="yourphoto.jpg" alt="Our Memory">
+    <video controls>
+        <source src="yourvideo.mp4" type="video/mp4">
+    </video>
+</div>
+
+<h2>Will you be my forever Valentine? 💌</h2>
+
+<button id="yes">YES 💖</button>
+<button id="no">No 😶</button>
+
+<div class="final" id="finalMessage">
+You said YES… and now I’m officially the happiest person alive 💞  
+I love you more than words can ever explain ❤️
+</div>
+
+</div>
+
+<script>
+
+let yesClicks = 0;
+
+const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
+const finalMessage = document.getElementById("finalMessage");
+
+yesBtn.addEventListener("click", function(){
+    yesClicks++;
+
+    if(yesClicks < 5){
+        yesBtn.innerText = "Are you sure? 🥺";
+    }
+    else if(yesClicks < 8){
+        yesBtn.innerText = "Think properly 😏";
+    }
+    else if(yesClicks < 12){
+        yesBtn.innerText = "Last chance 👀";
+    }
+    else{
+        finalMessage.style.display = "block";
+        yesBtn.style.display = "none";
+        noBtn.style.display = "none";
+        startHearts();
+    }
+});
+
+noBtn.addEventListener("click", function(){
+    document.body.style.background = "black";
+    document.body.innerHTML = `
+        <div style="color:white;text-align:center;margin-top:40%;">
+            <h1 style="font-family:Great Vibes;font-size:50px;">
+            Oh... so you chose No? 💔
+            </h1>
+            <p style="font-size:16px;margin-top:20px;padding:0 20px;">
+            That option was only for decoration 😌  
+            Please go back and choose correctly.
+            </p>
+        </div>
+    `;
+});
+
+function startHearts(){
+    setInterval(function(){
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random()*100 + "vw";
+        heart.style.fontSize = Math.random()*30 + 20 + "px";
+        document.getElementById("hearts").appendChild(heart);
+        setTimeout(()=>heart.remove(),6000);
+    },300);
+}
+
+</script>
+
+</body>
+</html>
